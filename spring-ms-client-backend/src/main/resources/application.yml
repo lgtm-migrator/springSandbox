@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: App-Client
+  boot:
+    admin:
+      url: http://localhost:10100
+      api-path: api/applications
+      hazelcast:
+        enabled: false
+      client:
+        service-url: http://localhost:10600
+        management-url: http://localhost:10600
+        health-url: http://localhost:10600/health
+  jpa: 
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  datasource:
+    url: jdbc:hsqldb:mem:testdb
+    driverClassName: org.hsqldb.jdbcDriver
+    username: sa
+    password:
+    platform: hsqldb
+  data:
+    rest:
+      base-uri: /api
+      
+zuul:
+  ignoredServices: '*'
+  routes:
+    countries: 
+      path: /api/v1/countries/**
+      serviceId: MS-Countries
+      strip-prefix: false
+      
+  
+hibernate:
+ dialect: org.hibernate.dialect.HSQLDialect
+    
+flyway:
+ enabled: true
+ 
+logging:
+  path: ./logs
+  file: client.log
+  level:
+    org.springframework: INFO
+    org.flywaydb: INFO
+    
+server:
+  tomcat:
+    remote_ip_header: x-forwarded-for
+    protocol_header: x-forwarded-proto
+  use-forward-headers: true
+  port: 10600
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+    region: dev.gnc
+    registerWithEureka: false
+  
+management.security.enabled: false  
+

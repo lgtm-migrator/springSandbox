@@ -3,7 +3,9 @@ spring:
     name: spring-boot-admin Server
   boot:
     admin:
-      url: http://xubuntu-16:10100  
+      url: http://localhost:10100
+      routes:
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,heapdump,loggers,auditevents,hystrix.stream
     
 server:
   port: 10100
