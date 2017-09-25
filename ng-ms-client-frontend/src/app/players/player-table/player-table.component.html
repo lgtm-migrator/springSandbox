@@ -1,0 +1,18 @@
+<table class="player-table">
+    <thead>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>H / F</th>
+        <th>Pays</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of players" (click)="select(player)">
+            <td>{{player.lastName}}</td>
+            <td>{{player.firstName}}</td>
+            <td class="center-text"><img src="../../../assets/images/{{player.gender | lowercase }}.png" width="12" height="25" alt="{{player.gender }}"
+                /></td>
+            <td class="center-text"><img src="../../../assets/images/countries/{{player.country | lowercase }}.png" width="25" height="16" alt="{{player.country }}"
+                /></td>
+        </tr>
+    </tbody>
+</table>
