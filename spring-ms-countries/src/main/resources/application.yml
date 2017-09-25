@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: MS-Countries
+  boot:
+    admin:
+      url: http://localhost:10100
+      api-path: api/applications
+      hazelcast:
+        enabled: false
+      client:
+        service-url: http://localhost:10500
+        management-url: http://localhost:10500
+        health-url: http://localhost:10500/health
+  jpa: 
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  datasource:
+    url: jdbc:hsqldb:mem:testdb
+    driverClassName: org.hsqldb.jdbcDriver
+    username: sa
+    password:
+    platform: hsqldb
+  data:
+    rest:
+      base-uri: /api
+  sleuth:
+    web:
+      enabled: true
+  
+hibernate:
+ dialect: org.hibernate.dialect.HSQLDialect
+    
+flyway:
+ enabled: true
+ 
+logging:
+  path: ./logs
+  file: countries.log
+  level:
+    org.springframework: INFO
+    org.flywaydb: INFO
+    
+server:
+  tomcat:
+    remote_ip_header: x-forwarded-for
+    protocol_header: x-forwarded-proto
+  use-forward-headers: true
+  port: 10500
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+    region: dev.gnc
+    registerWithEureka: true
+    
+management.security.enabled: false
