@@ -2,7 +2,7 @@
 
 ### Big picture
 
-![Big picture](./documentation/images/DemoZuulHystrix-BigPicture.png)
+![Big picture](./docs/images/DemoZuulHystrix-BigPicture.png)
 
 ### Démarrer les projets
 
