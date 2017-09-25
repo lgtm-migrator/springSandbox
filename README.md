@@ -4,7 +4,7 @@
 
 ![Big picture](./docs/images/DemoZuulHystrix-BigPicture.png)
 
-### Démarrer les projets
+### Run projects
 
 From each maven sub-modules directory, launch with: `mvn spring-boot:run`
 
