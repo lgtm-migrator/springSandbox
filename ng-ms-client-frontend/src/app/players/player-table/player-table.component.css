@@ -1,0 +1,21 @@
+.player-table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.player-table th, td {
+    border: 1px solid black;
+}
+
+.player-table tr:hover td {
+    background-color: #AAAAAA !important;
+}
+
+.center-text {
+    text-align: center;
+}
