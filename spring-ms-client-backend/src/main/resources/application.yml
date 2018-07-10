@@ -3,18 +3,18 @@ spring:
     name: App-Client
   boot:
     admin:
-      url: http://localhost:10100
-      api-path: api/applications
-      hazelcast:
-        enabled: false
       client:
-        service-url: http://localhost:10600
-        management-url: http://localhost:10600
-        health-url: http://localhost:10600/health
+        url:
+        - http://localhost:10100
+  flyway:
+    enabled: true
   jpa: 
     hibernate:
       ddl-auto: none
     show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.HSQLDialect
   datasource:
     url: jdbc:hsqldb:mem:testdb
     driverClassName: org.hsqldb.jdbcDriver
@@ -23,7 +23,16 @@ spring:
     platform: hsqldb
   data:
     rest:
-      base-uri: /api
+      base-path: /api
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - health
+        - info
+        - metrics
       
 zuul:
   ignoredServices: '*'
@@ -33,12 +42,6 @@ zuul:
       serviceId: MS-Countries
       strip-prefix: false
       
-  
-hibernate:
- dialect: org.hibernate.dialect.HSQLDialect
-    
-flyway:
- enabled: true
  
 logging:
   path: ./logs
@@ -49,8 +52,8 @@ logging:
     
 server:
   tomcat:
-    remote_ip_header: x-forwarded-for
-    protocol_header: x-forwarded-proto
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
   use-forward-headers: true
   port: 10600
 eureka:
@@ -58,7 +61,5 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
     region: dev.gnc
-    registerWithEureka: false
-  
-management.security.enabled: false  
+    registerWithEureka: false 
 

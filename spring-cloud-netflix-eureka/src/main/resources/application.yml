@@ -3,19 +3,28 @@ spring:
     name: Spring Cloud Eureka Server
   boot:
     admin:
-      url: http://localhost:10100
-      api-path: api/applications
-      hazelcast:
-        enabled: false
+      client:
+        url:
+        - http://localhost:10100
+        
 server:
   tomcat:
-    remote_ip_header: x-forwarded-for
-    protocol_header: x-forwarded-proto
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
   use-forward-headers: true
   
 eureka:
   instance:
-    leaseRenewalIntervalInSeconds: 30        
+    leaseRenewalIntervalInSeconds: 30
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - health
+        - info
+        - metrics       
 
 # ----------------------------------------------------------------------
 # Profiles for multiple instances
@@ -28,14 +37,13 @@ spring:
   boot:
     admin:
       client:
-        service-url: http://localhost:10300
-        management-url: http://localhost:10300
-        health-url: http://localhost:10300/health  
+        url:
+          - http://localhost:10100  
 eureka:
   instance:    
     hostname: localhost
     metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+      instanceId: 
   client:
     serviceUrl:
       defaultZone: http://localhost:10301/eureka/
@@ -53,14 +61,13 @@ spring:
   boot:
     admin:
       client:
-        service-url: http://localhost:10301
-        management-url: http://localhost:10301
-        health-url: http://localhost:10301/health  
+        url:
+          - http://localhost:10100  
 eureka:
   instance:    
     hostname: localhost
     metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+      instanceId: 
   client:
     serviceUrl:
       defaultZone: http://localhost:10300/eureka/
