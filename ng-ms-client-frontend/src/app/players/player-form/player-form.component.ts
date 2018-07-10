@@ -29,7 +29,7 @@ export class PlayerFormComponent implements OnInit {
      * should be in a service !
      */
     getCountries(): Observable<any> {
-        return this._http.get('http://vbl-dva-xubuntu15.dev.gnc:10600/api/v1/countries')
+        return this._http.get('http://localhost:10600/api/v1/countries')
             .map((result: Response) => result.json())
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }

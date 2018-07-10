@@ -30,7 +30,7 @@ export class PlayersPageComponent implements OnInit {
      * should be in a service !
      */
     getAllPlayers(): Observable<Player[]> {
-        return this._http.get('http://vbl-dva-xubuntu15.dev.gnc:10600/api/v1/players')
+        return this._http.get('http://localhost:10600/api/v1/players')
             .map((result: Response) => result.json())
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
