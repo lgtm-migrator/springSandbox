@@ -12,6 +12,7 @@
 		<module>spring-cloud-netflix-eureka</module>
 		<module>spring-ms-countries</module>
 		<module>spring-ms-client-backend</module>
+		<module>ms-codes-postaux</module>
 	</modules>
 
 	<properties>

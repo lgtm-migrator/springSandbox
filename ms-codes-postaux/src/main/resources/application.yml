@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: MS-ZipCodes
+  boot:
+    admin:
+      client:
+        url:
+        - http://localhost:10100
+  flyway:
+    enabled: true
+        
+  jpa: 
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      settings:
+        web-allow-others: false
+      enabled: false
+   
+      
+  datasource:
+    url: jdbc:h2:mem:zipcodedb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    platform: h2
+  data:
+    rest:
+      base-path: /api
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - health
+        - info
+        - metrics   
+  
+logging:
+  path: ./logs
+  file: zipcodes.log
+  level:
+    org.springframework: WARN
+    org.flywaydb: WARN
+    
+server:
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
+  use-forward-headers: true
+  port: 10510
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+    region: dev.gnc
+    registerWithEureka: true
