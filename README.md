@@ -1,3 +1,13 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/dvanderstoken/springsandbox/badge)](https://www.codefactor.io/repository/github/dvanderstoken/springsandbox)
+
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/DVanderstoken/springSandbox.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DVanderstoken/springSandbox/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/DVanderstoken/springSandbox.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DVanderstoken/springSandbox/context:javascript)
+[![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/DVanderstoken/springSandbox.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DVanderstoken/springSandbox/context:java)
+
+[![GitHub issues](https://img.shields.io/github/issues/DVanderstoken/springSandbox)](https://github.com/DVanderstoken/springSandbox/issues)
+
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=136540346)](https://dependabot.com)
+
 # Spring / Spring Boot / Spring Cloud sandbox projects
 
 ### Big picture
