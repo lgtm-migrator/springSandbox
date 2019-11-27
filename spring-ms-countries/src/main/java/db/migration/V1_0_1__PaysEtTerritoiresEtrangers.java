@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.flywaydb.core.api.migration.spring.SpringJdbcMigration;
+import org.flywaydb.core.api.migration.BaseJavaMigration;
+import org.flywaydb.core.api.migration.Context;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
+import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
@@ -21,10 +23,10 @@ import org.supercsv.prefs.CsvPreference;
 import db.migration.utils.ClassAttributeSpy;
 import nc.dva.examples.countries.PaysEtTerritoiresEtrangers;
 
-public class V1_0_1__PaysEtTerritoiresEtrangers implements SpringJdbcMigration {
+public class V1_0_1__PaysEtTerritoiresEtrangers extends BaseJavaMigration {
 
 	@Override
-	public void migrate(JdbcTemplate jdbcTemplate) {
+	public void migrate(Context context) {
 
 		final String query = "INSERT INTO pays(cog, actual, capay, crpay, ani, libcog, libenr, ancnom, codeiso2, codeiso3, codenum3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
@@ -46,6 +48,9 @@ public class V1_0_1__PaysEtTerritoiresEtrangers implements SpringJdbcMigration {
 			while ((p = reader.read(PaysEtTerritoiresEtrangers.class, header, processors)) != null) {
 				list.add(p);
 			}
+			
+			JdbcTemplate jdbcTemplate = 
+				      new JdbcTemplate(new SingleConnectionDataSource(context.getConnection(), true));
 
 			for (Object o : list) {
 				final PaysEtTerritoiresEtrangers pc = (PaysEtTerritoiresEtrangers) o;
