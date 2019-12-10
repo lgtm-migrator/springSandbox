@@ -38,7 +38,8 @@ management:
         include:
         - health
         - info
-        - metrics   
+        - metrics
+        - prometheus   
   
 logging:
   path: ./logs
