@@ -8,6 +8,8 @@ spring:
         - http://localhost:10100
   flyway:
     enabled: true
+    encoding: ISO-8859-1
+
   jpa: 
     hibernate:
       ddl-auto: none
@@ -15,8 +17,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.HSQLDialect
+
   datasource:
-    url: jdbc:hsqldb:mem:testdb
+    url: jdbc:hsqldb:mem:testdb2
     driverClassName: org.hsqldb.jdbcDriver
     username: sa
     password:
@@ -41,11 +44,10 @@ zuul:
       path: /api/v1/countries/**
       serviceId: MS-Countries
       strip-prefix: false
-      
- 
+
 logging:
-  path: ./logs
-  file: client.log
+  file:
+    path: ./logs
   level:
     org.springframework: INFO
     org.flywaydb: INFO
@@ -54,8 +56,9 @@ server:
   tomcat:
     remote-ip-header: x-forwarded-for
     protocol-header: x-forwarded-proto
-  use-forward-headers: true
   port: 10600
+  forward-headers-strategy: framework
+
 eureka:
   client:
     serviceUrl:

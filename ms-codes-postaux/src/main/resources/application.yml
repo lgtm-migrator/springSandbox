@@ -8,7 +8,7 @@ spring:
         - http://localhost:10100
   flyway:
     enabled: true
-        
+
   jpa: 
     hibernate:
       ddl-auto: none
@@ -43,19 +43,20 @@ management:
         - metrics   
   
 logging:
-  path: ./logs
-  file: zipcodes.log
+  file:
+    path: ./logs
   level:
     org.springframework: WARN
     org.flywaydb: WARN
+    nc.dva: DEBUG
     
 server:
   tomcat:
     remote-ip-header: x-forwarded-for
     protocol-header: x-forwarded-proto
-  use-forward-headers: true
   port: 10510
-  
+  forward-headers-strategy: framework
+
 eureka:
   client:
     serviceUrl:
