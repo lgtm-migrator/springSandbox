@@ -31,7 +31,7 @@ public class CodePostalCommune {
 	/**
 	 * @param codePostal
 	 * @param libelleAcheminement
-	 * @param codeInsee
+	 * @param codeCommune
 	 * @param nomCommune
 	 */
 	public CodePostalCommune(String codePostal, String libelleAcheminement, String codeCommune, String nomCommune) {
@@ -70,14 +70,14 @@ public class CodePostalCommune {
 	}
 
 	/**
-	 * @return the codeInsee
+	 * @return the codeCommune
 	 */
 	public String getCodeCommune() {
 		return codeCommune;
 	}
 
 	/**
-	 * @param codeInsee the codeInsee to set
+	 * @param codeCommune the codeInsee to set
 	 */
 	public void setCodeCommune(String codeCommune) {
 		this.codeCommune = codeCommune;
