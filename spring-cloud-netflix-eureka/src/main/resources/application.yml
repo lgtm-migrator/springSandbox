@@ -8,11 +8,10 @@ spring:
         - http://localhost:10100
         
 server:
+  forward-headers-strategy: native
   tomcat:
-    remote-ip-header: x-forwarded-for
-    protocol-header: x-forwarded-proto
-  use-forward-headers: true
-  
+    remoteip:
+      protocol-header: x-forwarded-proto
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 30
@@ -21,10 +20,7 @@ management:
   endpoints:
     web:
       exposure:
-        include:
-        - health
-        - info
-        - metrics       
+        include: "*"
 
 # ----------------------------------------------------------------------
 # Profiles for multiple instances
@@ -48,8 +44,8 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:10301/eureka/
 logging:
-  path: ./logs
-  file: eureka1.log
+  file:
+    path: ./logs
   level:
     org.springframework: INFO      
 
@@ -74,7 +70,7 @@ eureka:
   server:
     waitTimeInMsWhenSyncEmpty: 0  
 logging:
-  path: ./logs
-  file: eureka2.log
+  file:
+    path: ./logs
   level:
     org.springframework: INFO    

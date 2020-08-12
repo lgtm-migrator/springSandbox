@@ -35,11 +35,7 @@ management:
   endpoints:
     web:
       exposure:
-        include:
-        - health
-        - info
-        - metrics
-        - prometheus   
+        include: "*"
   
 logging:
   path: ./logs
@@ -50,11 +46,11 @@ logging:
     
 server:
   tomcat:
-    remote-ip-header: x-forwarded-for
-    protocol-header: x-forwarded-proto
-  use-forward-headers: true
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
   port: 10500
-  
+  forward-headers-strategy: none
 eureka:
   client:
     serviceUrl:
