@@ -7,6 +7,13 @@
     <version>2.2.4</version>
     <packaging>pom</packaging>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+    </parent>
+
+
     <modules>
         <module>spring-boot-admin</module>
         <module>spring-cloud-netflix-eureka</module>
@@ -22,9 +29,9 @@
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
-                <version>2.3.2.RELEASE</version>
+                <artifactId>spring-boot-dependencies</artifactId>
                 <type>pom</type>
+                <version>2.3.2.RELEASE</version>
                 <scope>import</scope>
             </dependency>
             <dependency>
