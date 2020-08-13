@@ -1,0 +1,39 @@
+version: '3.5'
+services:
+  prometheus:
+    image: 'prom/prometheus:latest'
+    restart: always
+    container_name: prometheus
+    hostname: prometheus
+    environment:
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    ports:
+      - "9090:9090"
+    volumes:
+      - prometheus-data:/prometheus
+    networks:
+      - spring-sandbox-network
+
+  grafana:
+    image: 'grafana/grafana:latest'
+    restart: always
+    container_name: grafana
+    hostname: grafana
+    environment:
+      - PATH=/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - GF_PATHS_CONFIG=/etc/grafana/grafana.ini
+      - GF_PATHS_DATA=/var/lib/grafana
+      - GF_PATHS_HOME=/usr/share/grafana
+      - GF_PATHS_LOGS=/var/log/grafana
+      - GF_PATHS_PLUGINS=/var/lib/grafana/plugins
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+    ports:
+      - "3000:3000"
+    networks:
+      - spring-sandbox-network
+
+networks:
+  spring-sandbox-network:
+
+volumes:
+  prometheus-data:

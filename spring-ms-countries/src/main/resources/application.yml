@@ -49,11 +49,61 @@ server:
     remoteip:
       remote-ip-header: x-forwarded-for
       protocol-header: x-forwarded-proto
-  port: 10500
   forward-headers-strategy: none
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
     region: dev.gnc
     registerWithEureka: true
+
+# ----------------------------------------------------------------------
+# Profiles for multiple instances
+# ----------------------------------------------------------------------
+---
+server:
+  port: 10500   # HTTP (Tomcat) port
+spring:
+  profiles: peer1
+  boot:
+    admin:
+      client:
+        url:
+          - http://localhost:10100
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      instanceId:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+logging:
+  file:
+    path: ./logs
+  level:
+    org.springframework: INFO
+
+---
+server:
+  port: 10501   # HTTP (Tomcat) port
+spring:
+  profiles: peer2
+  boot:
+    admin:
+      client:
+        url:
+          - http://localhost:10100
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      instanceId:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+logging:
+  file:
+    path: ./logs
+  level:
+    org.springframework: INFO
