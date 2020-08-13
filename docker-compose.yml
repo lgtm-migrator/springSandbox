@@ -19,6 +19,8 @@ services:
     restart: always
     container_name: grafana
     hostname: grafana
+    depends_on:
+      - prometheus
     environment:
       - PATH=/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       - GF_PATHS_CONFIG=/etc/grafana/grafana.ini
@@ -29,6 +31,92 @@ services:
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
     ports:
       - "3000:3000"
+    networks:
+      - spring-sandbox-network
+
+  spring-boot-admin:
+    build:
+      context: ./spring-boot-admin
+    restart: always
+    container_name: spring-boot-admin
+    hostname: spring-boot-admin
+    depends_on:
+      - prometheus
+      - grafana
+    ports:
+      - "10100:10100"
+    networks:
+      - spring-sandbox-network
+
+  spring-cloud-netflix-eureka-peer1:
+    build:
+      context: ./spring-cloud-netflix-eureka
+      dockerfile: Dockerfile-Peer1
+    restart: always
+    container_name: spring-cloud-netflix-eureka-peer1
+    hostname: spring-cloud-netflix-eureka-peer1
+    depends_on:
+      - spring-boot-admin
+    ports:
+      - "10300:10300"
+    networks:
+      - spring-sandbox-network
+
+  spring-cloud-netflix-eureka-peer2:
+    build:
+      context: ./spring-cloud-netflix-eureka
+      dockerfile: Dockerfile-Peer2
+    restart: always
+    container_name: spring-cloud-netflix-eureka-peer2
+    hostname: spring-cloud-netflix-eureka-peer2
+    depends_on:
+      - spring-boot-admin
+    ports:
+      - "10301:10301"
+    networks:
+      - spring-sandbox-network
+
+  ms-countries-peer1:
+    build:
+      context: ./spring-ms-countries
+      dockerfile: Dockerfile-Peer1
+    restart: always
+    container_name: ms-countries-peer1
+    hostname: ms-countries-peer1
+    depends_on:
+      - spring-cloud-netflix-eureka-peer1
+      - spring-cloud-netflix-eureka-peer2
+    ports:
+      - "10500:10500"
+    networks:
+      - spring-sandbox-network
+
+  ms-countries-peer2:
+    build:
+      context: ./spring-ms-countries
+      dockerfile: Dockerfile-Peer2
+    restart: always
+    container_name: ms-countries-peer2
+    hostname: ms-countries-peer2
+    depends_on:
+      - spring-cloud-netflix-eureka-peer1
+      - spring-cloud-netflix-eureka-peer2
+    ports:
+      - "10501:10501"
+    networks:
+      - spring-sandbox-network
+
+  ms-client-backend:
+    build:
+      context: ./spring-ms-client-backend
+    restart: always
+    container_name: ms-client-backend
+    hostname: ms-client-backend
+    depends_on:
+      - spring-cloud-netflix-eureka-peer1
+      - spring-cloud-netflix-eureka-peer2
+    ports:
+      - "10600:10600"
     networks:
       - spring-sandbox-network
 

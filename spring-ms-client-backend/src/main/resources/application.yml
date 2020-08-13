@@ -5,7 +5,7 @@ spring:
     admin:
       client:
         url:
-        - http://localhost:10100
+        - http://spring-boot-admin:10100
   flyway:
     enabled: true
     encoding: ISO-8859-1
@@ -59,7 +59,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
     region: dev.gnc
     registerWithEureka: false 
 
