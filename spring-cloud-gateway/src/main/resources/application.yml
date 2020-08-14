@@ -8,6 +8,9 @@ spring:
           - http://spring-boot-admin:10100
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: MS-Countries
           uri: lb://MS-COUNTRIES
