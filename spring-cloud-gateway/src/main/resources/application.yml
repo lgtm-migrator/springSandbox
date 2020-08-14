@@ -6,6 +6,13 @@ spring:
       client:
         url:
           - http://spring-boot-admin:10100
+  cloud:
+    gateway:
+      routes:
+        - id: MS-Countries
+          uri: lb://MS-COUNTRIES
+          predicates:
+            - Path=/api/v1/countries/**
 
 server:
   forward-headers-strategy: native
@@ -17,6 +24,13 @@ server:
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 30
+    hostname: localhost
+  client:
+    region: dev.gnc
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
+    fetch-registry: true
 
 management:
   endpoints:

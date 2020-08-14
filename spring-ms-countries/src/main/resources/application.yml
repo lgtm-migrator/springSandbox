@@ -76,6 +76,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
+
 logging:
   file:
     path: ./logs
@@ -102,6 +103,7 @@ eureka:
       defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
   server:
     waitTimeInMsWhenSyncEmpty: 0
+
 logging:
   file:
     path: ./logs
