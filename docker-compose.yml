@@ -120,6 +120,21 @@ services:
     networks:
       - spring-sandbox-network
 
+  spring-cloud-gateway:
+    build:
+      context: ./spring-cloud-gateway
+    restart: always
+    container_name: spring-cloud-gateway
+    hostname: spring-cloud-gateway
+    depends_on:
+      - spring-boot-admin
+      - spring-cloud-netflix-eureka-peer1
+      - spring-cloud-netflix-eureka-peer2
+    ports:
+      - "10200:10200"
+    networks:
+      - spring-sandbox-network
+
 networks:
   spring-sandbox-network:
 

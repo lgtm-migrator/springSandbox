@@ -19,6 +19,7 @@
         <module>spring-cloud-netflix-eureka</module>
         <module>spring-ms-countries</module>
         <module>spring-ms-client-backend</module>
+        <module>spring-cloud-gateway</module>
     </modules>
 
     <properties>
