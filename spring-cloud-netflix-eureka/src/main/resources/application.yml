@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Spring Cloud Eureka Server
+    name: spring-cloud-eureka-server
   boot:
     admin:
       client:
@@ -12,6 +12,7 @@ server:
   tomcat:
     remoteip:
       protocol-header: x-forwarded-proto
+
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 30
@@ -37,17 +38,17 @@ spring:
           - http://spring-boot-admin:10100
 eureka:
   instance:    
-    hostname: localhost
-    metadataMap:
-      instanceId: 
+    hostname: spring-cloud-netflix-eureka-peer1
   client:
+    registerWitEureka: false
     serviceUrl:
-      defaultZone: http://spring-cloud-netflix-eureka-peer2:10301/eureka/
+      defaultZone: http://spring-cloud-netflix-eureka-peer2:10301/eureka/,http://spring-cloud-netflix-eureka-peer1:10300/eureka/
+
 logging:
   file:
     path: ./logs
   level:
-    org.springframework: INFO      
+    org.springframework: WARN      
 
 ---
 server:
@@ -61,16 +62,16 @@ spring:
           - http://spring-boot-admin:10100
 eureka:
   instance:    
-    hostname: localhost
-    metadataMap:
-      instanceId: 
+    hostname: spring-cloud-netflix-eureka-peer2
   client:
+    registerWitEureka: false
     serviceUrl:
-      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/
+      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
   server:
     waitTimeInMsWhenSyncEmpty: 0  
+
 logging:
   file:
     path: ./logs
   level:
-    org.springframework: INFO    
+    org.springframework: WARN    

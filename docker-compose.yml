@@ -76,13 +76,13 @@ services:
     networks:
       - spring-sandbox-network
 
-  ms-countries-peer1:
+  ms-geolocation-peer1:
     build:
       context: ./spring-ms-countries
       dockerfile: Dockerfile-Peer1
     restart: always
-    container_name: ms-countries-peer1
-    hostname: ms-countries-peer1
+    container_name: ms-geolocation-peer1
+    hostname: ms-geolocation-peer1
     depends_on:
       - spring-cloud-netflix-eureka-peer1
       - spring-cloud-netflix-eureka-peer2
@@ -91,13 +91,13 @@ services:
     networks:
       - spring-sandbox-network
 
-  ms-countries-peer2:
+  ms-geolocation-peer2:
     build:
       context: ./spring-ms-countries
       dockerfile: Dockerfile-Peer2
     restart: always
-    container_name: ms-countries-peer2
-    hostname: ms-countries-peer2
+    container_name: ms-geolocation-peer2
+    hostname: ms-geolocation-peer2
     depends_on:
       - spring-cloud-netflix-eureka-peer1
       - spring-cloud-netflix-eureka-peer2
@@ -127,7 +127,6 @@ services:
     container_name: spring-cloud-gateway
     hostname: spring-cloud-gateway
     depends_on:
-      - spring-boot-admin
       - spring-cloud-netflix-eureka-peer1
       - spring-cloud-netflix-eureka-peer2
     ports:

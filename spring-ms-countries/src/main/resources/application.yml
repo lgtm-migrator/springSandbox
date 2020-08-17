@@ -1,6 +1,6 @@
 spring:
   application:
-    name: MS-Countries
+    name: geolocation
   boot:
     admin:
       client:
@@ -39,10 +39,9 @@ management:
   
 logging:
   path: ./logs
-  file: countries.log
+  file: geolocation.log
   level:
-    org.springframework: INFO
-    org.flywaydb: INFO
+    root: WARN
     
 server:
   tomcat:
@@ -50,6 +49,7 @@ server:
       remote-ip-header: x-forwarded-for
       protocol-header: x-forwarded-proto
   forward-headers-strategy: none
+
 eureka:
   client:
     region: dev.gnc
@@ -63,39 +63,25 @@ server:
   port: 10500   # HTTP (Tomcat) port
 spring:
   profiles: peer1
-  boot:
-    admin:
-      client:
-        url:
-          - http://spring-boot-admin:10100
+
 eureka:
   instance:
-    hostname: localhost
+    hostname: ms-geolocation-peer1
     metadataMap:
       instanceId:
   client:
     serviceUrl:
       defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
 
-logging:
-  file:
-    path: ./logs
-  level:
-    org.springframework: INFO
-
 ---
 server:
   port: 10501   # HTTP (Tomcat) port
 spring:
   profiles: peer2
-  boot:
-    admin:
-      client:
-        url:
-          - http://spring-boot-admin:10100
+
 eureka:
   instance:
-    hostname: localhost
+    hostname: ms-geolocation-peer2
     metadataMap:
       instanceId:
   client:
@@ -103,9 +89,3 @@ eureka:
       defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
   server:
     waitTimeInMsWhenSyncEmpty: 0
-
-logging:
-  file:
-    path: ./logs
-  level:
-    org.springframework: INFO

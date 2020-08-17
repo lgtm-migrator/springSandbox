@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Spring Cloud gateway Server
+    name: spring-cloud-gateway-server
   boot:
     admin:
       client:
@@ -11,11 +11,6 @@ spring:
       discovery:
         locator:
           enabled: true
-      routes:
-        - id: MS-Countries
-          uri: lb://MS-COUNTRIES
-          predicates:
-            - Path=/api/v1/countries/**
 
 server:
   forward-headers-strategy: native
@@ -25,15 +20,10 @@ server:
   port: 10200
 
 eureka:
-  instance:
-    leaseRenewalIntervalInSeconds: 30
-    hostname: localhost
   client:
-    region: dev.gnc
-    registerWithEureka: true
+    registerWithEureka: false
     serviceUrl:
       defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
-    fetch-registry: true
 
 management:
   endpoints:
@@ -41,3 +31,8 @@ management:
       exposure:
         include: "*"
 
+logging:
+  file:
+    path: ./logs
+  level:
+    root: WARN 
