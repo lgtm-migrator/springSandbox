@@ -1,7 +1,8 @@
 version: '3.5'
 services:
   prometheus:
-    image: 'prom/prometheus:latest'
+    build:
+      context: ./docker/prometheus
     restart: always
     container_name: prometheus
     hostname: prometheus
