@@ -23,17 +23,7 @@ spring:
     driverClassName: org.hsqldb.jdbcDriver
     username: sa
     password:
-    platform: hsqldb
-    
-  data:
-    rest:
-      base-path: /api
-      
-  cloud:    gateway:      enabled: false # client side only
-      routes:      - id: ReactiveCompositeDiscoveryClient_GEOLOCATION
-        predicates:         - Paths: /api/v1/countries/**
-        uri: lb://GEOLOCATION 
-    loadbalancer:      ribbon:        enabled: false  
+    platform: hsqldb 
       
 management:
   endpoints:
@@ -50,15 +40,10 @@ logging:
     
 server:
   tomcat:
-    remote-ip-header: x-forwarded-for
-    protocol-header: x-forwarded-proto
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
   port: 10600
   forward-headers-strategy: framework
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
-    region: dev.gnc
-    registerWithEureka: false 
+ 
 

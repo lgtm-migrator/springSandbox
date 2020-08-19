@@ -31,9 +31,12 @@ management:
     web:
       exposure:
         include: "*"
+  
 
 logging:
   file:
     path: ./logs
   level:
     root: WARN 
+    
+    
