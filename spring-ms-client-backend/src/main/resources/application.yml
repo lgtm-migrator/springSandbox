@@ -24,9 +24,16 @@ spring:
     username: sa
     password:
     platform: hsqldb
+    
   data:
     rest:
       base-path: /api
+      
+  cloud:    gateway:      enabled: false # client side only
+      routes:      - id: ReactiveCompositeDiscoveryClient_GEOLOCATION
+        predicates:         - Paths: /api/v1/countries/**
+        uri: lb://GEOLOCATION 
+    loadbalancer:      ribbon:        enabled: false  
       
 management:
   endpoints:
@@ -34,14 +41,6 @@ management:
       exposure:
         include: "*"
       
-zuul:
-  ignoredServices: '*'
-  routes:
-    countries: 
-      path: /api/v1/countries/**
-      serviceId: MS-Countries
-      strip-prefix: false
-
 logging:
   file:
     path: ./logs

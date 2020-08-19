@@ -16,7 +16,8 @@ services:
       - spring-sandbox-network
 
   grafana:
-    image: 'grafana/grafana:latest'
+    build:
+      context: ./docker/grafana
     restart: always
     container_name: grafana
     hostname: grafana
