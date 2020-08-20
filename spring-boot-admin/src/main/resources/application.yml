@@ -1,12 +1,8 @@
 spring:
   application:
     name: spring-boot-admin-server
-  boot:
-    admin:
-      client:
-        url:
-        - http://spring-boot-admin:10100
-    
+  boot:    admin:      ui:        cache-templates: true
+  
 server:
   port: 10100
    
@@ -20,4 +16,4 @@ logging:
   file:
     path: ./logs
   level:
-    root: WARN 
+    root: INFO 

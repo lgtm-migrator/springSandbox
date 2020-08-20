@@ -1,5 +1,6 @@
 version: '3.5'
 services:
+      
   prometheus:
     build:
       context: ./docker/prometheus
@@ -108,19 +109,19 @@ services:
     networks:
       - spring-sandbox-network
 
-#  ms-client-backend:
-#    build:
-#      context: ./spring-ms-client-backend
-#    restart: always
-#    container_name: ms-client-backend
-#    hostname: ms-client-backend
-#    depends_on:
-#      - spring-cloud-netflix-eureka-peer1
-#      - spring-cloud-netflix-eureka-peer2
-#    ports:
-#      - "10600:10600"
-#    networks:
-#      - spring-sandbox-network
+  ms-client-backend:
+    build:
+      context: ./spring-ms-client-backend
+    restart: always
+    container_name: ms-client-backend
+    hostname: ms-client-backend
+    depends_on:
+      - spring-cloud-netflix-eureka-peer1
+      - spring-cloud-netflix-eureka-peer2
+    ports:
+      - "10600:10600"
+    networks:
+      - spring-sandbox-network
 
   spring-cloud-gateway:
     build:

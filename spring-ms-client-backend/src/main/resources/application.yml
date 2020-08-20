@@ -39,11 +39,6 @@ logging:
     org.flywaydb: WARN
     
 server:
-  tomcat:
-    remoteip:
-      remote-ip-header: x-forwarded-for
-      protocol-header: x-forwarded-proto
   port: 10600
-  forward-headers-strategy: framework
  
 
