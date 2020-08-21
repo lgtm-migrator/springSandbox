@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: spring-cloud-gateway-server
+    
+  cloud:    config:      
+      fail-fast: true      discovery:        enabled: true
+        service-id: SPRING-CLOUD-CONFIG-SERVER
+
+eureka:
+  client:
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
+
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      label: docker
+

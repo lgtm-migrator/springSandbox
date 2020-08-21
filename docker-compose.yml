@@ -1,6 +1,6 @@
 version: '3.5'
-services:
-      
+services:     
+    
   prometheus:
     build:
       context: ./docker/prometheus
@@ -13,6 +13,7 @@ services:
       - "9090:9090"
     volumes:
       - prometheus-data:/prometheus
+      - logs:/var/log
     networks:
       - spring-sandbox-network
 
@@ -34,6 +35,8 @@ services:
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
     ports:
       - "3000:3000"
+    volumes:
+      - logs:/var/log
     networks:
       - spring-sandbox-network
 
@@ -48,6 +51,8 @@ services:
       - grafana
     ports:
       - "10100:10100"
+    volumes:
+      - logs:/var/log
     networks:
       - spring-sandbox-network
 
@@ -62,6 +67,8 @@ services:
       - spring-boot-admin
     ports:
       - "10300:10300"
+    volumes:
+      - logs:/var/log
     networks:
       - spring-sandbox-network
 
@@ -76,9 +83,28 @@ services:
       - spring-boot-admin
     ports:
       - "10301:10301"
+    volumes:
+      - logs:/var/log
     networks:
       - spring-sandbox-network
-
+      
+  spring-cloud-config:
+    build:
+      context: ./spring-cloud-config-serveur
+      dockerfile: Dockerfile
+    restart: always
+    container_name: spring-cloud-config
+    hostname: spring-cloud-config
+    depends_on:
+      - spring-cloud-netflix-eureka-peer1
+      - spring-cloud-netflix-eureka-peer2
+    ports:
+      - "10800:10800"
+    volumes:
+      - logs:/var/log
+    networks:
+      - spring-sandbox-network
+      
   ms-geolocation-peer1:
     build:
       context: ./spring-ms-countries
@@ -91,6 +117,8 @@ services:
       - spring-cloud-netflix-eureka-peer2
     ports:
       - "10500:10500"
+    volumes:
+      - logs:/var/log
     networks:
       - spring-sandbox-network
 
@@ -106,6 +134,8 @@ services:
       - spring-cloud-netflix-eureka-peer2
     ports:
       - "10501:10501"
+    volumes:
+      - logs:/var/log
     networks:
       - spring-sandbox-network
 
@@ -120,6 +150,8 @@ services:
       - spring-cloud-netflix-eureka-peer2
     ports:
       - "10600:10600"
+    volumes:
+      - logs:/var/log
     networks:
       - spring-sandbox-network
 
@@ -134,6 +166,8 @@ services:
       - spring-cloud-netflix-eureka-peer2
     ports:
       - "10200:10200"
+    volumes:
+      - logs:/var/log
     networks:
       - spring-sandbox-network
 
@@ -142,3 +176,4 @@ networks:
 
 volumes:
   prometheus-data:
+  logs:

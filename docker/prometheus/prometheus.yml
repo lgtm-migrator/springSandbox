@@ -30,4 +30,9 @@ scrape_configs:
   metrics_path: /actuator/prometheus
   static_configs:
   - targets: ['ms-geolocation-peer1:10500','ms-geolocation-peer2:10501']
-  
+
+- job_name: spring-cloud-config
+  metrics_path: /actuator/prometheus
+  static_configs:
+  - targets: ['spring-cloud-config:10800']
+    

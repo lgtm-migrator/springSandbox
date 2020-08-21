@@ -38,11 +38,12 @@ management:
         include: "*"
   
 logging:
-  path: ./logs
-  file: geolocation.log
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
   level:
-    root: WARN
-    
+    root: INFO 
+   
 server:
   tomcat:
     remoteip:

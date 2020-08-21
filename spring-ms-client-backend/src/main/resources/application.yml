@@ -32,12 +32,12 @@ management:
         include: "*"
       
 logging:
-  file:
-    path: ./logs
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
   level:
-    org.springframework: WARN
-    org.flywaydb: WARN
-    
+    root: INFO 
+   
 server:
   port: 10600
  

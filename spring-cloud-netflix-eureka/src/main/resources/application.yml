@@ -45,10 +45,11 @@ eureka:
       defaultZone: http://spring-cloud-netflix-eureka-peer2:10301/eureka/,http://spring-cloud-netflix-eureka-peer1:10300/eureka/
 
 logging:
-  file:
-    path: ./logs
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
   level:
-    org.springframework: WARN      
+    root: INFO 
 
 ---
 server:
@@ -71,7 +72,9 @@ eureka:
     waitTimeInMsWhenSyncEmpty: 0  
 
 logging:
-  file:
-    path: ./logs
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
   level:
-    org.springframework: WARN    
+    root: INFO 
+    

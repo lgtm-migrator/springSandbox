@@ -18,7 +18,8 @@
 		<module>spring-ms-countries</module>
 		<module>spring-ms-client-backend</module>
 		<module>spring-cloud-gateway</module>
-  </modules>
+		<module>spring-cloud-config-serveur</module>
+	</modules>
 
 	<properties>
 		<spring-boot-admin.version>2.3.0</spring-boot-admin.version>

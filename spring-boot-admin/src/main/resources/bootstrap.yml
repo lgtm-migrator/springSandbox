@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-boot-admin-server
+    
+  cloud.config:
+    fail-fast: true
+    uri: http://spring-cloud-config:10800/
+
+---
+spring:  profiles: docker
+  cloud:    config:      label: docker
