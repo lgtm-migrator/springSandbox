@@ -9,7 +9,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>spring-ms-client-backend</artifactId>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -83,8 +83,9 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
+
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
