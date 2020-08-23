@@ -1,0 +1,92 @@
+spring:
+  application:
+    name: geolocation
+  boot:
+    admin:
+      client:
+        url:
+        - http://localhost:10100
+  flyway:
+    enabled: true
+        
+  jpa: 
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.HSQLDialect
+ 
+      
+  datasource:
+    url: jdbc:hsqldb:mem:testdb
+    driverClassName: org.hsqldb.jdbcDriver
+    username: sa
+    password:
+    platform: hsqldb
+  data:
+    rest:
+      base-path: /api
+  sleuth:
+    web:
+      enabled: true
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  
+logging:
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
+  level:
+    root: INFO 
+   
+server:
+  tomcat:
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+  forward-headers-strategy: none
+
+eureka:
+  client:
+    region: dev.gnc
+    registerWithEureka: true
+
+# ----------------------------------------------------------------------
+# Profiles for multiple instances
+# ----------------------------------------------------------------------
+---
+server:
+  port: 10500   # HTTP (Tomcat) port
+spring:
+  profiles: peer1
+
+eureka:
+  instance:
+    hostname: ms-geolocation-peer1
+    metadataMap:
+      instanceId:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+
+---
+server:
+  port: 10501   # HTTP (Tomcat) port
+spring:
+  profiles: peer2
+
+eureka:
+  instance:
+    hostname: ms-geolocation-peer2
+    metadataMap:
+      instanceId:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0

@@ -1,0 +1,112 @@
+[INFO] Scanning for projects...
+[INFO] Scanning for projects...
+[ERROR] [ERROR] Could not find the selected project in the reactor: ./spring-boot-config-serveur @ 
+[ERROR] Could not find the selected project in the reactor: ./spring-boot-config-serveur -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MavenExecutionException
+[INFO] 
+[INFO] ----------------------< nc.dva:spring-boot-admin >----------------------
+[INFO] Building spring-boot-admin 20.08
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot-maven-plugin:2.3.3.RELEASE:run (default-cli) > test-compile @ spring-boot-admin >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ spring-boot-admin ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ spring-boot-admin ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ spring-boot-admin ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/didier/eclipse-workspaces/personnel/springSandbox/spring-boot-admin/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ spring-boot-admin ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot-maven-plugin:2.3.3.RELEASE:run (default-cli) < test-compile @ spring-boot-admin <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.3.3.RELEASE:run (default-cli) @ spring-boot-admin ---
+[INFO] Attaching agents: []
+              ___          _             ___           _       _      _       _      
+             / __|_ __ _ _(_)_ _  __ _  | _ ) ___  ___| |_    /_\  __| |_ __ (_)_ _  
+             \__ \ '_ \ '_| | ' \/ _` | | _ \/ _ \/ _ \  _|  / _ \/ _` | '  \| | ' \ 
+             |___/ .__/_| |_|_||_\__, | |___/\___/\___/\__| /_/ \_\__,_|_|_|_|_|_||_|
+                 |_|             |___/                                               
+
+                            ````````````````````````````````````..``                           
+                        -?a$B######################################BgU|_                       
+                      `]B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#n'                     
+                     -P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@b_                    
+                    ,O@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@g=                   
+                   !8@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B_                  
+                  !#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B^                 
+                 *#@@@@@@@@@@@@@@@@@@@@@@@g2VD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#(`               
+               `i#@@@@@@@@@@@@@@@@@@@@@@@H'  `w@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#c`              
+              `V#@@@@@@@@@@@@@@@@@@@@@@@Q,    'b@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@h'             
+             'K@@@@@@@@@@@@@@@@@@@@@@@@#r      ,8@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@W_            
+            _6@@@@@@@@@@@@@@@@@@@@@@@@@V`   `   ~#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$"           
+           ^B@@@@@@@@@@@@@@@@@@@@@@@@@G`  `lR_   ^#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#|`         
+         `i#@@@@@@@@@@@@@@@@@@@@@@@@@#,   ^#@H`   i#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#n`        
+        `V@@@@@@@@@@@@@@@@@@@@@@@@@@@w   _8@@@2`  `2@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@h'       
+       'U@@@@@@@@@@@@@@@@@@@@@@@@@@@D-  `U@@@@#|   'Z@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@W_      
+      ,6@@@@@@@@@@@@@@@@@@@@@@@@@@@#~   |#@@@@@#^   _0@@@@@@@@@@@@@@K=_!K@@@@@@@@@@@@@@@0:     
+     =8@@@@@@@@@@@@@@@@@@@@@@@@@@@@}`  =B@@@@@@@Q"   !B@@@@@@@@@@@#i`   `*Q@@@@@@@@@@@@@@Q>    
+    (#@@@@@@@@@@@@@@@@@@@@@@@@@@@@j`  _g@@@@@@@@@8,   >#@@@@@@@@@R:       `i@@@@@@@@@@@@@@#]   
+   !#@@@@@@@@@@@@@@@@@@@@@@@@@@@@$-   h@@@@@@@@@@@W'   (#@@@@@@@h'   =b}`   *Q@@@@@@@@@@@@@#*  
+   >UUUUaUUUUUUUUUUaUUUUP$@@@@@@#~   "@@@@@@@@@@@@@o`  `n@@@@@#]`   rB@@D!   -z#############l  
+   ``                    `rB@@@@]   .Z@@@@@@@@@@@@@@]`  `Q@@@Q^   `n#@@@@#n'   .'''''''''''-'  
+    `_,,,,,,,,,,,,,,,,,`   !8@@H`   c@@@@@@@@@@@@@@@#^   ^#@R"   -H@@@@@@@@g,              `   
+     *B@@@@@@@@@@@@@@@@6,   _W8,   ^#@@@@@@@@@@@@@@@@Q:   (z'   =8@@@@@@@@@@#Dbb666b66666K:    
+      ,R@@@@@@@@@@@@@@@@#?   `.   ,Q@@@@@@@@@@@@@@@@@@Q:      `l#@@@@@@@@@@@@@@@@@@@@@@@8=     
+       'G@@@@@@@@@@@@@@@@#c`     .W@@@@@@@@@@@@@@@@@@@@O-    -P@@@@@@@@@@@@@@@@@@@@@@@@O_      
+        .j@@@@@@@@@@@@@@@@@U-   `c@@@@@@@@@@@@@@@@@@@@@@a   =$@@@@@@@@@@@@@@@@@@@@@@@@P-       
+         `}#@@@@@@@@@@@@@@@@R<'_x#@@@@@@@@@@@@@@@@@@@@@@@OaW#@@@@@@@@@@@@@@@@@@@@@@@@V`        
+           r#@@@@@@@@@@@@@@@@@##@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#x`         
+            ~Q@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B*           
+             -q@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O,            
+              `z@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P-             
+               `}#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2`              
+                 ?#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#]`               
+                  >#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#r                 
+                   (#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#~                  
+                    "0@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Q!                   
+                     _q@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@R,                    
+                      `c#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#j'                     
+                        _iqQ########################################QW],                       
+                           ``'-_______--___----_-----_-_--_--_---_-``                          
+2020-08-23 19:46:32.831  INFO 9205 --- [           main] nc.dva.admin.SpringBootAdminApplication  : Starting SpringBootAdminApplication on MacBookProDVA with PID 9205 (/Users/didier/eclipse-workspaces/personnel/springSandbox/spring-boot-admin/target/classes started by didier in /Users/didier/eclipse-workspaces/personnel/springSandbox/spring-boot-admin)
+2020-08-23 19:46:32.834  INFO 9205 --- [           main] nc.dva.admin.SpringBootAdminApplication  : No active profile set, falling back to default profiles: default
+2020-08-23 19:46:33.711  INFO 9205 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10100 (http)
+2020-08-23 19:46:33.720  INFO 9205 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-08-23 19:46:33.720  INFO 9205 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-08-23 19:46:33.812  INFO 9205 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-08-23 19:46:33.812  INFO 9205 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 949 ms
+2020-08-23 19:46:34.133  INFO 9205 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-23 19:46:34.230  WARN 9205 --- [           main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-08-23 19:46:34.525  INFO 9205 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 15 endpoint(s) beneath base path '/actuator'
+2020-08-23 19:46:34.579  INFO 9205 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10100 (http) with context path ''
+2020-08-23 19:46:34.600  INFO 9205 --- [           main] nc.dva.admin.SpringBootAdminApplication  : Started SpringBootAdminApplication in 2.078 seconds (JVM running for 2.484)
+2020-08-23 19:46:34.716  INFO 9205 --- [io-10100-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-23 19:46:34.717  INFO 9205 --- [io-10100-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-08-23 19:46:34.722  INFO 9205 --- [io-10100-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 02:15 min
+[INFO] Finished at: 2020-08-23T19:48:44+11:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.3.3.RELEASE:run (default-cli) on project spring-boot-admin: Application finished with exit code: 137 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

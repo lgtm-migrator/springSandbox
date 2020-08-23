@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: spring-cloud-eureka-server
+  boot:
+    admin:
+      client:
+        url:
+        - http://localhost:10100
+        
+server:
+  forward-headers-strategy: native
+  tomcat:
+    remoteip:
+      protocol-header: x-forwarded-proto
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 30
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# ----------------------------------------------------------------------
+# Profiles for multiple instances
+# ----------------------------------------------------------------------
+---
+server:
+  port: 10300   # HTTP (Tomcat) port
+spring:
+  profiles: peer1
+eureka:
+  instance:    
+    hostname: localhost
+  client:
+    registerWitEureka: false
+    serviceUrl:
+      defaultZone: http://localhost:10301/eureka/,http://localhost:10300/eureka/
+
+logging:
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
+  level:
+    root: INFO 
+
+---
+server:
+  port: 10301   # HTTP (Tomcat) port
+spring:
+  profiles: peer2
+eureka:
+  instance:    
+    hostname: localhost
+  client:
+    registerWitEureka: false
+    serviceUrl:
+      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0  
+
+logging:
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
+  level:
+    root: INFO 
+    

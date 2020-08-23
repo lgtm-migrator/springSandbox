@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: spring-cloud-gateway-server
+    
+  boot:
+    admin:
+      client:
+        url:
+          - http://localhost:10100
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  
+server:
+  forward-headers-strategy: native
+  tomcat:
+    remoteip:
+      protocol-header: x-forwarded-proto
+  port: 10200
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
+  level:
+    root: INFO 
+     
+eureka:
+  client:
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://localost:10300/eureka/,http://localost:10301/eureka/
+
+

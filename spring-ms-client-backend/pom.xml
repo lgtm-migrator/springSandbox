@@ -96,6 +96,8 @@
 					<addResources>true</addResources>
 					<jvmArguments>-Xmx128m -Xss512k</jvmArguments>
 					<mainClass>nc.dva.examples.ClientApplication</mainClass>
+					<skip>false</skip>
+					<fork>true</fork>
 				</configuration>
 				<executions>
 					<execution>

@@ -86,6 +86,8 @@
 					<addResources>true</addResources>
 					<jvmArguments>-Xmx128m -Xss512k</jvmArguments>
 					<mainClass>nc.dva.config.SpringCloudConfigApplication</mainClass>
+					<skip>false</skip>
+					<fork>true</fork>
 				</configuration>
 				<executions>
 					<execution>

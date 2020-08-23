@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: App-Client
+  boot:
+    admin:
+      client:
+        url:
+        - http://localhost:10100
+  flyway:
+    enabled: true
+    encoding: ISO-8859-1
+
+  jpa: 
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.HSQLDialect
+
+  datasource:
+    url: jdbc:hsqldb:mem:testdb2
+    driverClassName: org.hsqldb.jdbcDriver
+    username: sa
+    password:
+    platform: hsqldb 
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      
+logging:
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
+  level:
+    root: INFO 
+   
+server:
+  port: 10600
+ 
+

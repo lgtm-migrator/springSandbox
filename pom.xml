@@ -15,10 +15,10 @@
 	<modules>
 		<module>spring-boot-admin</module>
 		<module>spring-cloud-netflix-eureka</module>
+		<module>spring-cloud-config-serveur</module>
+		<module>spring-cloud-gateway</module>
 		<module>spring-ms-countries</module>
 		<module>spring-ms-client-backend</module>
-		<module>spring-cloud-gateway</module>
-		<module>spring-cloud-config-serveur</module>
 	</modules>
 
 	<properties>
@@ -51,6 +51,21 @@
 				<goals> <goal>build</goal> </goals> </execution> </executions> <configuration> 
 				<dockerDirectory>${basedir}</dockerDirectory> <imageName>${project.artifactId}</imageName> 
 				</configuration> </plugin -->
+				<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+					<fork>true</fork>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>

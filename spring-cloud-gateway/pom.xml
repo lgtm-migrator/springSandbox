@@ -74,11 +74,6 @@
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-client</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -103,6 +98,8 @@
 					<addResources>true</addResources>
 					<jvmArguments>-Xmx128m -Xss512k</jvmArguments>
 					<mainClass>nc.dva.gateway.SpringCloudGatewayApplication</mainClass>
+					<skip>false</skip>
+					<fork>true</fork>
 				</configuration>
 				<executions>
 					<execution>
