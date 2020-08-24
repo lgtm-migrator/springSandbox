@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableEurekaServer
-@EnableDiscoveryClient
 @ComponentScan
 public class SpringCloudNetflixEurekaApplication {
 

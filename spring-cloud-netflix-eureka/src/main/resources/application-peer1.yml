@@ -1,0 +1,16 @@
+server:
+  port: 10300   # HTTP (Tomcat) port
+eureka:
+  instance:    
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:10301/eureka/,http://localhost:10300/eureka/
+
+logging:
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
+  level:
+    root: INFO 
