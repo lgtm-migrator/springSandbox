@@ -28,9 +28,9 @@ public class PlayerController {
 	public PlayerController(Environment env, PlayerRepository repo) {
 		this.environment = env;
 		this.lRepository = repo;
-		this.gatewayBaseURI = Arrays.asList(environment.getActiveProfiles()).contains("docker")
-				? "http://spring-cloud-gateway:10200"
-				: "http://localhost:10200";
+		this.gatewayBaseURI = Arrays.asList(environment.getActiveProfiles()).contains("local")
+				? "http://localhost:10200"
+				: "http://spring-cloud-gateway:10200";
 	}
 
 	@RequestMapping(path = "/api/v1/players")

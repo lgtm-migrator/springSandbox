@@ -1,0 +1,16 @@
+server:
+  port: 10300   # HTTP (Tomcat) port
+eureka:
+  instance:    
+    hostname: spring-cloud-netflix-eureka-peer1
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://spring-cloud-netflix-eureka-peer2:10301/eureka/,http://spring-cloud-netflix-eureka-peer1:10300/eureka/
+
+logging:
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
+  level:
+    root: INFO 

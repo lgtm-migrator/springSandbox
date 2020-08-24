@@ -55,38 +55,3 @@ eureka:
   client:
     region: dev.gnc
     registerWithEureka: true
-
-# ----------------------------------------------------------------------
-# Profiles for multiple instances
-# ----------------------------------------------------------------------
----
-server:
-  port: 10500   # HTTP (Tomcat) port
-spring:
-  profiles: peer1
-
-eureka:
-  instance:
-    hostname: ms-geolocation-peer1
-    metadataMap:
-      instanceId:
-  client:
-    serviceUrl:
-      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
-
----
-server:
-  port: 10501   # HTTP (Tomcat) port
-spring:
-  profiles: peer2
-
-eureka:
-  instance:
-    hostname: ms-geolocation-peer2
-    metadataMap:
-      instanceId:
-  client:
-    serviceUrl:
-      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
-  server:
-    waitTimeInMsWhenSyncEmpty: 0
