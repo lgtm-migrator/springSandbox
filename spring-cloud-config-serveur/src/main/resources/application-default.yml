@@ -7,7 +7,7 @@ spring:
         url:
           - http://spring-boot-admin:10100
   cloud:    config:      enabled: false
-      server:        git:          uri: https://github.com/DVanderstoken/configurations.git
+      server:        git:          uri: http://github.com/DVanderstoken/configurations.git
           
 server:
   forward-headers-strategy: native
