@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: geolocation
+
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+      uri: http://spring-cloud-config-server:10800
+      
+---
+spring:
+  profiles: dockerpeer1
+  cloud.config.label: docker
+  
+---
+  
+spring:
+  profiles: dockerpeer2
+  cloud.config.label: docker
