@@ -66,5 +66,12 @@ public class PlayerController {
 		return new HttpEntity<Object>(result);
 
 	}
+	
+	@GetMapping(path = "/api/v1/fallback/countries")
+	public HttpEntity<?> getAllLocalCountries() {
+
+		return new HttpEntity<Object>(lRepository.findCountries());
+
+	}
 
 }

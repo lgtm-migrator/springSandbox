@@ -13,6 +13,20 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+#      routes:
+#        - id: geolocation
+#          uri: lb://GEOLOCATION
+#          predicates:
+#          - Path=/geolocation/**
+#          filters:
+#          - name: CircuitBreaker
+#            args:
+#              name: countryCircuitBreaker
+#              fallbakUri: forward://countryFallback
+#        - id: geolocation-fallback
+#          uri: http://ms-client-backend:10600/api/v1/fallback/countries
+#          predicates:
+#          - Path=/countryFallback
   
 server:
   forward-headers-strategy: native
