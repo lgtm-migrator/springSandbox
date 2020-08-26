@@ -7,7 +7,12 @@ spring:
       fail-fast: true
       discovery:
         enabled: true
-      uri: http://spring-cloud-config-server:10800
+        serviceId: SPRING-CLOUD-CONFIG-SERVER
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
       
 ---
 spring:

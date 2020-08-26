@@ -113,8 +113,7 @@ services:
     container_name: ms-geolocation-peer1
     hostname: ms-geolocation-peer1
     depends_on:
-      - spring-cloud-netflix-eureka-peer1
-      - spring-cloud-netflix-eureka-peer2
+      - spring-cloud-config
     ports:
       - "10500:10500"
     volumes:
@@ -130,8 +129,7 @@ services:
     container_name: ms-geolocation-peer2
     hostname: ms-geolocation-peer2
     depends_on:
-      - spring-cloud-netflix-eureka-peer1
-      - spring-cloud-netflix-eureka-peer2
+      - spring-cloud-config
     ports:
       - "10501:10501"
     volumes:
@@ -168,6 +166,19 @@ services:
       - "10200:10200"
     volumes:
       - logs:/var/log
+    networks:
+      - spring-sandbox-network
+      
+  client-frontend:
+    build:
+      context: ./ng-ms-client-frontend
+    restart: always
+    container_name: ng-client-frontend
+    hostname: ng-client-frontend
+    depends_on:
+      - ms-client-backend
+    ports:
+      -  "10400:80"
     networks:
       - spring-sandbox-network
 
