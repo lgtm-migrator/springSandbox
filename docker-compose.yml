@@ -19,9 +19,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
 
   grafana:
     build:
@@ -48,9 +48,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
 
   spring-boot-admin:
     build:
@@ -70,9 +70,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
 
   spring-cloud-netflix-eureka-peer1:
     build:
@@ -92,9 +92,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
 
   spring-cloud-netflix-eureka-peer2:
     build:
@@ -114,9 +114,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
       
   spring-cloud-config:
     build:
@@ -137,9 +137,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
       
   ms-geolocation-peer1:
     build:
@@ -159,9 +159,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
 
   ms-geolocation-peer2:
     build:
@@ -181,9 +181,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
 
   ms-client-backend:
     build:
@@ -203,9 +203,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
 
   spring-cloud-gateway:
     build:
@@ -225,9 +225,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 128M
+          memory: 192M
         reservations:
-          memory: 64M
+          memory: 128M
       
   client-frontend:
     build:
