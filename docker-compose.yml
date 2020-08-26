@@ -16,6 +16,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
 
   grafana:
     build:
@@ -39,6 +45,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
 
   spring-boot-admin:
     build:
@@ -55,6 +67,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
 
   spring-cloud-netflix-eureka-peer1:
     build:
@@ -71,6 +89,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
 
   spring-cloud-netflix-eureka-peer2:
     build:
@@ -87,6 +111,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
       
   spring-cloud-config:
     build:
@@ -104,6 +134,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
       
   ms-geolocation-peer1:
     build:
@@ -120,6 +156,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
 
   ms-geolocation-peer2:
     build:
@@ -136,6 +178,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
 
   ms-client-backend:
     build:
@@ -152,6 +200,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
 
   spring-cloud-gateway:
     build:
@@ -168,6 +222,12 @@ services:
       - logs:/var/log
     networks:
       - spring-sandbox-network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
       
   client-frontend:
     build:

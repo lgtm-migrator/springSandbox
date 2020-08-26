@@ -11,7 +11,7 @@ spring:
       enabled: false
       server:
         git:
-          uri: file://${user.home}/workspaces/personnel/configurations
+          uri: https://github.com/DVanderstoken/configurations.git
           
 server:
   forward-headers-strategy: native
