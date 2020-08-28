@@ -9,6 +9,7 @@ spring:
           - http://spring-boot-admin:10100
   cloud:
     gateway:
+      metrics.enabled: true
       discovery:
         locator:
           enabled: true

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mvn clean package -DskipTests
 java -Xms128m -Xmx192m -jar -Dspring.profiles.active=local ./spring-boot-admin/target/spring-boot-admin-20.08.jar &
 sleep 10

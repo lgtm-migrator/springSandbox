@@ -1,4 +1,4 @@
-FROM grafana/grafana:latest
-ADD ./provisioning /etc/grafana/provisioning
-ADD ./dashboards /var/lib/grafana/dashboards
-ADD ./grafana.ini /etc/grafana/grafana.ini
+FROM grafana/grafana:7.1.3
+COPY ./provisioning /etc/grafana/provisioning
+COPY ./dashboards /var/lib/grafana/dashboards
+COPY ./grafana.ini /etc/grafana/grafana.ini
