@@ -1,0 +1,13 @@
+server:
+  port: 10501   # HTTP (Tomcat) port
+
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      instanceId:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10300/eureka/,http://localhost:10301/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0

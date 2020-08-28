@@ -1,17 +1,27 @@
 spring:
   application:
-    name: spring-boot-admin Server
-  boot:
-    admin:
-      client:
-        url:
-        - http://spring-boot-admin:10100
+    name: spring-boot-admin-server
+    
+    boot:
+      admin:
+        ui:
+          cache-templates: true
+    output:
+      ansi:
+        enabled: always
     
 server:
   port: 10100
-   
+     
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  
+logging:
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
+  level:
+    root: INFO 

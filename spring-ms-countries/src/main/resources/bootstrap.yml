@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: geolocation
+
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        serviceId: SPRING-CLOUD-CONFIG-SERVER
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
+      
+---
+spring:
+  profiles: dockerpeer1
+  cloud.config.label: docker
+  
+---
+  
+spring:
+  profiles: dockerpeer2
+  cloud.config.label: docker

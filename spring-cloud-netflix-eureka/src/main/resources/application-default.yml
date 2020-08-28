@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: spring-cloud-eureka-server
+  boot:
+    admin:
+      client:
+        url:
+        - http://spring-boot-admin:10100
+        
+server:
+  forward-headers-strategy: native
+  tomcat:
+    remoteip:
+      protocol-header: x-forwarded-proto
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 30
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    

@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: spring-cloud-gateway-server
+    
+  boot:
+    admin:
+      client:
+        url:
+          - http://spring-boot-admin:10100
+  cloud:
+    gateway:
+      metrics.enabled: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+#      routes:
+#        - id: geolocation
+#          uri: lb://GEOLOCATION
+#          predicates:
+#          - Path=/geolocation/**
+#          filters:
+#          - name: CircuitBreaker
+#            args:
+#              name: countryCircuitBreaker
+#              fallbakUri: forward://countryFallback
+#        - id: geolocation-fallback
+#          uri: http://ms-client-backend:10600/api/v1/fallback/countries
+#          predicates:
+#          - Path=/countryFallback
+  
+server:
+  forward-headers-strategy: native
+  tomcat:
+    remoteip:
+      protocol-header: x-forwarded-proto
+  port: 10200
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  file: 
+    path: "/var/log"
+    name: ${spring.application.name}.log
+  level:
+    root: INFO 
+     
+eureka:
+  client:
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
+
+
