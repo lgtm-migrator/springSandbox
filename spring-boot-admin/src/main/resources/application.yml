@@ -2,10 +2,10 @@ spring:
   application:
     name: spring-boot-admin-server
     
-    boot:
-      admin:
-        ui:
-          cache-templates: true
+  boot:
+    admin:
+      ui:
+        cache-templates: true     
     output:
       ansi:
         enabled: always

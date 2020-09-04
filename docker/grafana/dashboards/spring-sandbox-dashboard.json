@@ -297,19 +297,19 @@
           "expr": "gateway_requests_seconds_max",
           "instant": false,
           "interval": "",
-          "legendFormat": "Max Requests",
+          "legendFormat": "max time",
           "refId": "A"
         },
         {
-          "expr": "rate(gateway_requests_seconds_sum[1m])",
+          "expr": "rate(gateway_requests_seconds_sum[1s])",
           "interval": "",
-          "legendFormat": "Sum Requests",
+          "legendFormat": "Average time",
           "refId": "B"
         },
         {
-          "expr": "rate(gateway_requests_seconds_count[1m])",
+          "expr": "rate(gateway_requests_seconds_count[1s])",
           "interval": "",
-          "legendFormat": "Requests Count",
+          "legendFormat": "Average count",
           "refId": "C"
         }
       ],
@@ -317,7 +317,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Gateway requests (per second)",
+      "title": "Gateway requests",
       "tooltip": {
         "shared": true,
         "sort": 0,
