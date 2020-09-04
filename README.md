@@ -1,4 +1,4 @@
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/DVanderstoken/springSandbox?style=plastic)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/DVanderstoken/springSandbox)
 [![CodeFactor](https://www.codefactor.io/repository/github/dvanderstoken/springsandbox/badge)](https://www.codefactor.io/repository/github/dvanderstoken/springsandbox)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=136540346)](https://dependabot.com)
 [![GitHub issues](https://img.shields.io/github/issues/DVanderstoken/springSandbox)](https://github.com/DVanderstoken/springSandbox/issues)
