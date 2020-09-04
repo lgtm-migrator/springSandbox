@@ -18,6 +18,14 @@ Projects is completed with *Prometheus* and *Grafana*.
 
 ### Run projects
 
+#### Prerequisites
+
+- _Git_
+- _Docker_ (_Desktop_ for Windows and Mac, _Engine_ for Linux)
+- _Docker Compose_
+- _JDK_ 8+
+- _Maven_ 3+
+
 #### with Docker (prefered version):
 
 ```
