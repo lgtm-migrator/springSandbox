@@ -1,3 +1,5 @@
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/DVanderstoken/springSandbox?style=plastic)
+
 [![CodeFactor](https://www.codefactor.io/repository/github/dvanderstoken/springsandbox/badge)](https://www.codefactor.io/repository/github/dvanderstoken/springsandbox)
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/DVanderstoken/springSandbox.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DVanderstoken/springSandbox/alerts/)
