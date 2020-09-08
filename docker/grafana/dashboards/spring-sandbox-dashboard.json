@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1598570474304,
+  "iteration": 1599606118790,
   "links": [],
   "panels": [
     {
@@ -24,54 +24,50 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "editable": true,
+      "error": false,
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "semi-dark-blue",
-                "value": null
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "decgbytes"
+          "custom": {}
         },
         "overrides": []
       },
       "fill": 1,
       "fillGradient": 0,
+      "grid": {
+        "leftLogBase": 1,
+        "leftMax": null,
+        "leftMin": null,
+        "rightLogBase": 1,
+        "rightMax": null,
+        "rightMin": null
+      },
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 12,
         "x": 0,
         "y": 0
       },
       "hiddenSeries": false,
-      "id": 4,
+      "id": 8,
       "legend": {
+        "alignAsTable": true,
         "avg": false,
-        "current": false,
-        "max": false,
+        "current": true,
+        "max": true,
         "min": false,
+        "rightSide": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
+      "links": [],
       "nullPointMode": "null",
       "percentage": false,
       "pluginVersion": "7.1.3",
-      "pointradius": 2,
+      "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -80,25 +76,47 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(jvm_memory_used_bytes{area=\"heap\"})*100/sum(jvm_memory_max_bytes{area=\"heap\"})",
+          "expr": "sum(jvm_memory_used_bytes{instance=\"$instance\", area=\"heap\"})",
           "format": "time_series",
-          "instant": false,
           "interval": "",
-          "legendFormat": "$instance",
-          "refId": "A"
+          "intervalFactor": 2,
+          "legendFormat": "used",
+          "metric": "",
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "expr": "sum(jvm_memory_committed_bytes{instance=\"$instance\", area=\"heap\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "committed",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "expr": "sum(jvm_memory_max_bytes{instance=\"$instance\", area=\"heap\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "max",
+          "refId": "C",
+          "step": 2400
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "JVM Memory Usage",
+      "title": "JVM Heap",
       "tooltip": {
+        "msResolution": false,
         "shared": true,
         "sort": 0,
-        "value_type": "individual"
+        "value_type": "cumulative"
       },
       "type": "graph",
+      "x-axis": true,
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -106,16 +124,23 @@
         "show": true,
         "values": []
       },
+      "y-axis": true,
+      "y_formats": [
+        "mbytes",
+        "short"
+      ],
       "yaxes": [
         {
-          "format": "decgbytes",
+          "$$hashKey": "object:313",
+          "format": "bytes",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": 0,
           "show": true
         },
         {
+          "$$hashKey": "object:314",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -131,7 +156,7 @@
     },
     {
       "aliasColors": {},
-      "bars": false,
+      "bars": true,
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
@@ -160,14 +185,14 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "percentunit"
         },
         "overrides": []
       },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
+        "h": 14,
         "w": 12,
         "x": 12,
         "y": 0
@@ -175,15 +200,17 @@
       "hiddenSeries": false,
       "id": 6,
       "legend": {
+        "alignAsTable": true,
         "avg": false,
         "current": false,
         "max": false,
         "min": false,
+        "rightSide": true,
         "show": true,
         "total": false,
         "values": false
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "nullPointMode": "null",
       "percentage": false,
@@ -193,14 +220,50 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "system_cpu_usage{instance=\"$instance\"}",
+          "expr": "system_cpu_usage{instance=\"spring-boot-admin:10100\"}",
           "interval": "",
-          "legendFormat": "$instance",
+          "legendFormat": "Spring Boot Admin",
           "refId": "A"
+        },
+        {
+          "expr": "system_cpu_usage{instance=\"spring-cloud-config:10800\"}",
+          "interval": "",
+          "legendFormat": "Spring Cloud Config",
+          "refId": "B"
+        },
+        {
+          "expr": "system_cpu_usage{instance=\"spring-cloud-gateway:10200\"}",
+          "interval": "",
+          "legendFormat": "Spring Cloud Gateway",
+          "refId": "C"
+        },
+        {
+          "expr": "system_cpu_usage{instance=\"spring-cloud-netflix-eureka-peer1:10300\"}",
+          "interval": "",
+          "legendFormat": "Spring Cloud Netflix eureka #1",
+          "refId": "D"
+        },
+        {
+          "expr": "system_cpu_usage{instance=\"spring-cloud-netflix-eureka-peer2:10301\"}",
+          "interval": "",
+          "legendFormat": "Spring Cloud Netflix eureka #2",
+          "refId": "E"
+        },
+        {
+          "expr": "system_cpu_usage{instance=\"ms-geolocation-peer1:10500\"}",
+          "interval": "",
+          "legendFormat": "MS Geolocation #1",
+          "refId": "F"
+        },
+        {
+          "expr": "system_cpu_usage{instance=\"ms-geolocation-peer2:10501\"}",
+          "interval": "",
+          "legendFormat": "MS Geolocation #2",
+          "refId": "G"
         }
       ],
       "thresholds": [],
@@ -223,14 +286,17 @@
       },
       "yaxes": [
         {
-          "format": "percent",
+          "$$hashKey": "object:52",
+          "decimals": null,
+          "format": "percentunit",
           "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "max": "1",
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:53",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -245,11 +311,514 @@
       }
     },
     {
-      "aliasColors": {
-        "Max Requests": "semi-dark-red",
-        "Requests Count": "semi-dark-blue",
-        "Sum Requests": "semi-dark-orange"
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {
+        "leftLogBase": 1,
+        "leftMax": null,
+        "leftMin": null,
+        "rightLogBase": 1,
+        "rightMax": null,
+        "rightMin": null
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "hiddenSeries": false,
+      "id": 10,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.3",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(jvm_memory_used_bytes{instance=\"$instance\", area=\"nonheap\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "used",
+          "metric": "",
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "expr": "sum(jvm_memory_committed_bytes{instance=\"$instance\", area=\"nonheap\"})",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "committed",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "expr": "sum(jvm_memory_max_bytes{instance=\"$instance\", area=\"nonheap\"})",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "max",
+          "refId": "C",
+          "step": 2400
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "JVM Non-Heap",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "x-axis": true,
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "y-axis": true,
+      "y_formats": [
+        "mbytes",
+        "short"
+      ],
+      "yaxes": [
+        {
+          "$$hashKey": "object:465",
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:466",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(191, 148, 112, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 0,
+        "y": 14
+      },
+      "hideTimeOverride": false,
+      "id": 12,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "spring-cloud-gateway",
+      "targets": [
+        {
+          "expr": "sum(gateway_requests_seconds_count{job=~\"$gatewayservice\"})  ",
+          "interval": "",
+          "legendFormat": "$gatewayservice",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Requests Served",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(191, 148, 112, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 8,
+        "y": 14
+      },
+      "hideTimeOverride": false,
+      "id": 14,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "spring-cloud-gateway",
+      "targets": [
+        {
+          "expr": "sum(gateway_requests_seconds_count{outcome=\"SUCCESSFUL\", job=~\"$gatewayservice\"})",
+          "interval": "",
+          "legendFormat": "$gatewayservice",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Successful Requests Served",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(191, 148, 112, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 16,
+        "y": 14
+      },
+      "hideTimeOverride": false,
+      "id": 16,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "spring-cloud-gateway",
+      "targets": [
+        {
+          "expr": "sum(gateway_requests_seconds_count{outcome!=\"SUCCESSFUL\", job=~\"$gatewayservice\"})",
+          "interval": "",
+          "legendFormat": "$gatewayservice",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Unsuccessful Requests Served",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 18,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.3",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "routeId",
+      "scopedVars": {
+        "routeId": {
+          "selected": false,
+          "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
+          "value": "ReactiveCompositeDiscoveryClient_GEOLOCATION"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "gateway_requests_seconds_sum{routeId=~\"$routeid\", job=~\"$gatewayservice\"}/gateway_requests_seconds_count{routeId=~\"$routeid\", job=~\"$gatewayservice\"}",
+          "interval": "",
+          "legendFormat": "{{ status }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Request processing time for $routeid",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:750",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:751",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -264,64 +833,60 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 6
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 17
       },
       "hiddenSeries": false,
-      "id": 2,
+      "id": 20,
       "legend": {
         "avg": false,
         "current": false,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": false
       },
       "lines": true,
       "linewidth": 1,
+      "links": [],
       "nullPointMode": "null",
       "percentage": false,
       "pluginVersion": "7.1.3",
-      "pointradius": 2,
+      "pointradius": 5,
       "points": false,
       "renderer": "flot",
+      "repeat": "routeId",
+      "scopedVars": {
+        "routeId": {
+          "selected": false,
+          "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
+          "value": "ReactiveCompositeDiscoveryClient_GEOLOCATION"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "gateway_requests_seconds_max",
-          "instant": false,
+          "expr": "gateway_requests_seconds_count{outcome=\"SUCCESSFUL\", routeId=~\"$routeid\", job=~\"$gatewayservice\"}",
           "interval": "",
-          "legendFormat": "max time",
+          "legendFormat": "{{ job }} / {{ routeUri }}",
           "refId": "A"
-        },
-        {
-          "expr": "rate(gateway_requests_seconds_sum[1s])",
-          "interval": "",
-          "legendFormat": "Average time",
-          "refId": "B"
-        },
-        {
-          "expr": "rate(gateway_requests_seconds_count[1s])",
-          "interval": "",
-          "legendFormat": "Average count",
-          "refId": "C"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Gateway requests",
+      "title": "$routeId Success API Gateway Calls",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
-        "value_type": "individual"
+        "value_type": "cumulative"
       },
       "type": "graph",
       "xaxis": {
@@ -333,6 +898,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:915",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -341,6 +907,111 @@
           "show": true
         },
         {
+          "$$hashKey": "object:916",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 22,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.3",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "routeId",
+      "scopedVars": {
+        "routeId": {
+          "selected": false,
+          "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
+          "value": "ReactiveCompositeDiscoveryClient_GEOLOCATION"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "gateway_requests_seconds_count{outcome!=\"SUCCESSFUL\", routeId=~\"$routeid\", job=~\"$gatewayservice\"}",
+          "interval": "",
+          "legendFormat": "{{ job }} / {{ routeUri }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$routeId Unsuccessful GW Calls",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1080",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1081",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -365,8 +1036,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "spring-cloud-gateway:10200",
-          "value": "spring-cloud-gateway:10200"
+          "text": "ms-geolocation-peer1:10500",
+          "value": "ms-geolocation-peer1:10500"
         },
         "datasource": "Prometheus",
         "definition": "label_values(jvm_memory_used_bytes, instance)",
@@ -378,6 +1049,168 @@
         "options": [],
         "query": "label_values(jvm_memory_used_bytes, instance)",
         "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "spring-cloud-gateway",
+          "value": [
+            "spring-cloud-gateway"
+          ]
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(gateway_requests_seconds_count,job)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Gateway Service",
+        "multi": true,
+        "name": "gatewayservice",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": true,
+            "text": "spring-cloud-gateway",
+            "value": "spring-cloud-gateway"
+          }
+        ],
+        "query": "label_values(gateway_requests_seconds_count,job)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "Eden Space",
+          "value": "Eden Space"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(jvm_memory_used_bytes{instance=\"$instance\", area=\"heap\"},id)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Heap",
+        "multi": false,
+        "name": "heap",
+        "options": [
+          {
+            "selected": true,
+            "text": "Eden Space",
+            "value": "Eden Space"
+          },
+          {
+            "selected": false,
+            "text": "Survivor Space",
+            "value": "Survivor Space"
+          },
+          {
+            "selected": false,
+            "text": "Tenured Gen",
+            "value": "Tenured Gen"
+          }
+        ],
+        "query": "label_values(jvm_memory_used_bytes{instance=\"$instance\", area=\"heap\"},id)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "Code Cache",
+          "value": "Code Cache"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(jvm_memory_used_bytes{instance=\"$instance\", area=\"nonheap\"},id)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "NonHeap",
+        "multi": false,
+        "name": "nonheap",
+        "options": [
+          {
+            "selected": true,
+            "text": "Code Cache",
+            "value": "Code Cache"
+          },
+          {
+            "selected": false,
+            "text": "Compressed Class Space",
+            "value": "Compressed Class Space"
+          },
+          {
+            "selected": false,
+            "text": "Metaspace",
+            "value": "Metaspace"
+          }
+        ],
+        "query": "label_values(jvm_memory_used_bytes{instance=\"$instance\", area=\"nonheap\"},id)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
+          "value": [
+            "ReactiveCompositeDiscoveryClient_GEOLOCATION"
+          ]
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(gateway_requests_seconds_count,routeId)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Route ID",
+        "multi": true,
+        "name": "routeid",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": true,
+            "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
+            "value": "ReactiveCompositeDiscoveryClient_GEOLOCATION"
+          }
+        ],
+        "query": "label_values(gateway_requests_seconds_count,routeId)",
+        "refresh": 0,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
