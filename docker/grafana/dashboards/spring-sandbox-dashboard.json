@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1599606118790,
+  "iteration": 1599606118792,
   "links": [],
   "panels": [
     {
@@ -755,13 +755,6 @@
       "points": false,
       "renderer": "flot",
       "repeat": "routeId",
-      "scopedVars": {
-        "routeId": {
-          "selected": false,
-          "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
-          "value": "ReactiveCompositeDiscoveryClient_GEOLOCATION"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -859,13 +852,6 @@
       "points": false,
       "renderer": "flot",
       "repeat": "routeId",
-      "scopedVars": {
-        "routeId": {
-          "selected": false,
-          "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
-          "value": "ReactiveCompositeDiscoveryClient_GEOLOCATION"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": true,
@@ -882,7 +868,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "$routeId Success API Gateway Calls",
+      "title": "$routeid Success API Gateway Calls",
       "tooltip": {
         "shared": false,
         "sort": 0,
@@ -963,13 +949,6 @@
       "points": false,
       "renderer": "flot",
       "repeat": "routeId",
-      "scopedVars": {
-        "routeId": {
-          "selected": false,
-          "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
-          "value": "ReactiveCompositeDiscoveryClient_GEOLOCATION"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": true,
@@ -986,7 +965,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "$routeId Unsuccessful GW Calls",
+      "title": "$routeid Unsuccessful GW Calls",
       "tooltip": {
         "shared": false,
         "sort": 0,
@@ -1185,9 +1164,10 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
+          "tags": [],
+          "text": "All",
           "value": [
-            "ReactiveCompositeDiscoveryClient_GEOLOCATION"
+            "$__all"
           ]
         },
         "datasource": "Prometheus",
@@ -1199,12 +1179,12 @@
         "name": "routeid",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "All",
             "value": "$__all"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "ReactiveCompositeDiscoveryClient_GEOLOCATION",
             "value": "ReactiveCompositeDiscoveryClient_GEOLOCATION"
           }
