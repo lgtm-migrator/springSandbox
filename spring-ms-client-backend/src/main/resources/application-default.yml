@@ -6,6 +6,7 @@ spring:
       client:
         url:
         - http://spring-boot-admin:10100
+        
   flyway:
     enabled: true
     encoding: ISO-8859-1

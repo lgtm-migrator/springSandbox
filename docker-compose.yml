@@ -37,8 +37,8 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - prometheus-data:/prometheus
-      - logs:/var/log
+      - prometheus-data:/prometheus:rw
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:
@@ -67,7 +67,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - logs:/var/log
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:
@@ -89,7 +89,7 @@ services:
     ports:
       - "10100:10100"
     volumes:
-      - logs:/var/log
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:
@@ -111,7 +111,7 @@ services:
     ports:
       - "10300:10300"
     volumes:
-      - logs:/var/log
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:
@@ -133,7 +133,7 @@ services:
     ports:
       - "10301:10301"
     volumes:
-      - logs:/var/log
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:
@@ -156,7 +156,7 @@ services:
     ports:
       - "10800:10800"
     volumes:
-      - logs:/var/log
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:
@@ -178,7 +178,7 @@ services:
     ports:
       - "10500:10500"
     volumes:
-      - logs:/var/log
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:
@@ -200,7 +200,7 @@ services:
     ports:
       - "10501:10501"
     volumes:
-      - logs:/var/log
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:
@@ -222,7 +222,7 @@ services:
     ports:
       - "10600:10600"
     volumes:
-      - logs:/var/log
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:
@@ -244,7 +244,7 @@ services:
     ports:
       - "10200:10200"
     volumes:
-      - logs:/var/log
+      - logs:/var/log:rw
     networks:
       - spring-sandbox-network
     deploy:

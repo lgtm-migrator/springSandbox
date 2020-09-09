@@ -8,11 +8,17 @@ spring:
       discovery:
         enabled: true
         serviceId: SPRING-CLOUD-CONFIG-SERVER
+        
+  cache:
+    caffeine:
+      spec: maximumSize=500,expireAfterAccess=120s        
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://spring-cloud-netflix-eureka-peer1:10300/eureka/,http://spring-cloud-netflix-eureka-peer2:10301/eureka/
+    healthcheck:
+      enabled: true
       
 ---
 spring:
