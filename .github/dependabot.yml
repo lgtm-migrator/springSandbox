@@ -1,0 +1,35 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "18:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: org.springframework.boot:spring-boot-starter-parent
+    versions:
+    - 2.4.2
+    - 2.4.3
+    - 2.4.4
+  - dependency-name: org.springframework.boot:spring-boot-dependencies
+    versions:
+    - 2.4.2
+    - 2.4.3
+    - 2.4.4
+  - dependency-name: de.codecentric:spring-boot-admin-starter-server
+    versions:
+    - 2.3.1
+    - 2.4.0
+  - dependency-name: de.codecentric:spring-boot-admin-starter-client
+    versions:
+    - 2.3.1
+    - 2.4.0
+  - dependency-name: org.springframework.cloud:spring-cloud-dependencies
+    versions:
+    - Hoxton.SR10
+    - Hoxton.SR9
+  - dependency-name: org.springframework.cloud:spring-cloud-netflix-core
+    versions:
+    - 2.2.6.RELEASE
+    - 2.2.7.RELEASE
