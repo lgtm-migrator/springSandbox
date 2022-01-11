@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>nc.dva</groupId>
 		<artifactId>spring-cloud-examples</artifactId>
-		<version>20.08</version>
+		<version>22.01</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>spring-ms-countries</artifactId>
@@ -42,7 +42,10 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-client</artifactId>
 		</dependency>
-
+		<dependency>
+    		<groupId>org.springframework.cloud</groupId>
+    		<artifactId>spring-cloud-starter-bootstrap</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>

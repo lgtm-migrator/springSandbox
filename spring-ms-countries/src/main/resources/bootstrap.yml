@@ -11,8 +11,8 @@ spring:
         
   cache:
     caffeine:
-      spec: maximumSize=500,expireAfterAccess=120s        
-
+      spec: maximumSize=500,expireAfterAccess=120s 
+    
 eureka:
   client:
     serviceUrl:
